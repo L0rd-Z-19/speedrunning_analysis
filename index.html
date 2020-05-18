@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Proposal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    </head>
+    <body style="background-color: rgb(32, 32, 32);">
+        <!-- Nav bar -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a style="color:rgb(100, 99, 99)" href="../index.html"><h1>Not an Escape root</h1></a>
+        </nav>
+        <!-- main page -->
+        <section class="container-fluid" style="text-align: center; background-color: #48C9B0; padding-bottom: 10px ;">
+            <h1>Speedruning</h1>
+            <hr>
+            <h5>Our Goal: Tell the story that is speedrunning Super Mario 64 with data from <a href="https://www.speedrun.com/sm64" style="color:#F4D03F ">speedrun.com</a> </h5>
+            <hr>
+            <img src="../static/images/super_mario.png">
+            <hr style="opacity: 0">
+            <h5>Procedure</h5>
+            <p>
+                Using Python, we will either call the speedrunning api or web scrape the web page. (This depends on how useful the api proves to be)      
+            </p>
+            <p>
+                From the data collected through that part, we will store our newly collected data in a mongo DB. That data base, called the speedrunning DB, will be used to feed data into the JS library https://github.com/mongodb/node-mongodb-native MongoDB.
+            </p>
+            <p>
+                This will then let us transition into putting the data up on an interactive site showing runs over time, individual players over time, different categories (check the link for more insight), countries overtime, and what platform was played on.
+            </p>
+            <img src="../static/images/speedrun_logo.png">
+        </section>
+        <!-- footer -->
+        <footer>
+                <hr>
+                <a href="https://github.com/L0rd-Z-19" style="color: bisque;">Our Github Repo |</a>
+                <!-- <a href="https://www.linkedin.com/in/zachary-wilson-40146317a/" style="color: bisque;">My linkedin |</a> -->
+                <a href="#"  style="color: bisque;">Koopa The Quick</a>
+                <hr>
+        </footer>
+    </body>
+</html>
