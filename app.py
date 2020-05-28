@@ -6,7 +6,7 @@ from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
 
 # Database Setup
-engine = create_engine("sql:///games.sql")
+engine = create_engine("sql:///game_db.sql")
 
 # Reflect existing database into new model
 Base = automap_base()
@@ -37,8 +37,7 @@ def games():
 
     # Create a dictionary from the row data and append to a list of all_games
     all_games = []
-    for rank, name, platform, year, genre, publisher, na_sales,
-    eu_sales, jp_sales, other_sales, global_sales in results:
+    for rank, name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales in results:
         games_dict = {}
         games_dict["Rank"] = rank
         games_dict["Name"] = name
