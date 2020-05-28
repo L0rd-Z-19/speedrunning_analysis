@@ -1,58 +1,56 @@
-import numpy as np
-
+# Dependencies
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
 
-
-#################################################
 # Database Setup
-#################################################
 engine = create_engine("sql:///games.sql")
 
-# reflect an existing database into a new model
+# Reflect existing database into new model
 Base = automap_base()
-# reflect the tables
+
+# Reflect tables
 Base.prepare(engine, reflect=True)
 
-# Save reference to the table
+# Save reference to table
 Game = Base.classes.game
 
-#################################################
 # Flask Setup
-#################################################
 app = Flask(__name__)
 
+# Route to homepage
 @app.route("/")
+
 def games():
-    # Create our session (link) from Python to the DB
+
+    # Link from Python to the DB
     session = Session(engine)
 
-    """Return a list of passenger data including the name, age, and sex of each passenger"""
-    # Query all passengers
-    results = session.query(Game.Rank, Game.Name, Game.Platform, Game.Year, Game.Genre,
-    	Game.Publisher, Game.NA_Sales, Game.EU_Sales, JP_Sales, Other_Sales, Global_Sales).all()
+    # Query all games
+    results = session.query(Game.rank, Game.name, Game.platform, Game.year, Game.genre,
+    	Game.publisher, Game.na_sales, Game.eu_sales, Game.jp_sales,
+    	Game.other_sales, Game.global_sales).all()
 
     session.close()
 
-    # Create a dictionary from the row data and append to a list of all_passengers
+    # Create a dictionary from the row data and append to a list of all_games
     all_games = []
-    for Rank, Name, Platform, Year, Genre, Publisher, NA_Sales,
-    EU_Sales, JP_Sales, Other_Sales, Global_Sales in results:
+    for rank, name, platform, year, genre, publisher, na_sales,
+    eu_sales, jp_sales, other_sales, global_sales in results:
         games_dict = {}
-        games_dict["Rank"] = Rank
-        games_dict["Name"] = Name
-        games_dict["Platform"] = Platform
-        games_dict["Year"] = Year
-        games_dict["Genre"] = Genre
-        games_dict["Publisher"] = Publisher
-        games_dict["NA_Sales"] = NA_Sales
-        games_dict["EU_Sales"] = EU_Sales
-        games_dict["JP_Sales"] = JP_Sales
-        games_dict["Other_Sales"] = Other_Sales
-        games_dict["Global_Sales"] = Global_Sales
+        games_dict["Rank"] = rank
+        games_dict["Name"] = name
+        games_dict["Platform"] = platform
+        games_dict["Year"] = year
+        games_dict["Genre"] = genre
+        games_dict["Publisher"] = publisher
+        games_dict["NA_Sales"] = na_sales
+        games_dict["EU_Sales"] = eu_sales
+        games_dict["JP_Sales"] = jp_sales
+        games_dict["Other_Sales"] = other_sales
+        games_dict["Global_Sales"] = global_sales
         all_games.append(games_dict)
 
     return jsonify(all_games)
