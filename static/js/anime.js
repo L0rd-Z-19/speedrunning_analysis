@@ -6,7 +6,7 @@ let tl = anime.timeline({
     tl.add({
         targets: 'span div',
         width: '100%',
-        backgroundColor: 'rgb(32, 32, 32)',
+        backgroundColor: '#8B00FF',
         delay: anime.stagger(100)
     })
     .add({

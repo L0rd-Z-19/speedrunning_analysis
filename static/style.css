@@ -5,7 +5,7 @@ span {
 }
 
 div {
-    background-color: white;
+    background-color: #AE00FF;
     height: 100vh;
     transition: background-color 1s;
 }
