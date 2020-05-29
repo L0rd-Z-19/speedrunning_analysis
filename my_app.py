@@ -21,10 +21,11 @@ app = Flask(__name__)
 
 def games():
 
-    # Link from Python to the DB
+    # Extract data from DB
     conn = engine.connect()
     data = pd.read_sql('SELECT * FROM games', conn)
-    
+
+    #Convert to dictionary
     games_dict = {}
 
     col_0 = data['rank'].to_dict()
@@ -39,8 +40,8 @@ def games():
     col_9 = data['other_sales'].to_dict()
     col_10 = data['global_sales'].to_dict()
 
-
-    # games_dict['rank'] = col_0
+    
+    games_dict['rank'] = col_0
     games_dict['name'] = col_1
     games_dict['platform'] = col_2
     games_dict['year'] = col_3
