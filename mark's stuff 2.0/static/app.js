@@ -1,7 +1,18 @@
-console.log('Hello World')
-
-importedData = d3.json('http://127.0.0.1:5000/data');
+importedData = d3.json('/data');
 console.log(importedData);
+
+function optionChanged() {
+    var dropdownMenu = dropdownMenu.property("value");
+
+    selectionArr = ['Nintendo', 'Microsoft Game Studios', 'Take-Two Interactive', 'Sony Computer Entertainment', 'Activision']
+
+    for (var i = 0; i < selectionArr.length; i++) {
+        if (selection === selectionArr[i]) {
+            var filteredData = importedData.filter(d => d.publisher === selectionArr[i])
+        }
+    }
+    console.log(filteredData[0]);
+}
 
 // d3.csv("game_data.csv").then(function(importedData) {
 
