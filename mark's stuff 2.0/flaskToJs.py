@@ -18,18 +18,13 @@ app = Flask(__name__)
 
 # Route to homepage
 @app.route("/")
+
 def welcome():
+
     return render_template("index.html")
 
-@app.route("/analysis")
-def analysis():
-    return render_template("analysis.html")
-
 @app.route("/data")
-def data():
-    return render_template("data.html")
 
-@app.route("/data")
 def games():
 
     # Extract data from DB

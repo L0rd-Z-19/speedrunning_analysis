@@ -1,13 +1,14 @@
-var importedData = d3.json("/data");
-console.log(importedData);
-d3.csv("data/data.csv").then(function(data){
+d3.json("/data").then(function(data){
+    console.log(data)
 
+    if (data["Publisher"] == "Nintendo");
+    console.log(pub);
     //Plot the data!!!!
     var margin = {top: 10, right: 30, bottom: 30, left: 60},
         width = 690 - margin.left - margin.right,
         height = 600 - margin.top - margin.bottom;
     //svg object
-    var svg = d3.select("#scatter")
+    var svg = d3.select("#plot")
         .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -60,7 +61,7 @@ d3.csv("data/data.csv").then(function(data){
     .attr("transform",
         "translate(" + (width/2) + " ," + (height + margin.top + 18) + ")")
     .style("text-anchor", "middle")
-    .text("In Poverty (%)");
+    .text("Games By " + pub);
 
     // Add the y Axis
     svg.append("g")
