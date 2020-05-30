@@ -1,8 +1,12 @@
-d3.json("/data").then(function(data){
-    console.log(data)
+d3.json("/json").then(function(data){  
+    pub = [];
+    for(i=0; i < data.length; i++){
+        //If the publisher === selected publisher add it to the list
+        if(data[i]["publisher"] === "Nintendo"){
+            pub.push(data[i])
+        }
+    }
 
-    if (data["Publisher"] == "Nintendo");
-    console.log(pub);
     //Plot the data!!!!
     var margin = {top: 10, right: 30, bottom: 30, left: 60},
         width = 690 - margin.left - margin.right,
@@ -16,26 +20,25 @@ d3.json("/data").then(function(data){
             .attr("transform","translate(" + margin.left + "," + margin.top + ")");
     //x-axis
     var x = d3.scaleLinear()
-        .domain([0,25])
+        .domain([0,16598])
         .range([0,width]);
     svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
     //y-axis
     var y = d3.scaleLinear()
-        .domain([0,30])
+        .domain([0,85])
         .range([height,0]);
     svg.append("g")
         .call(d3.axisLeft(y));
-
     //add the data
     svg.append('g')
         .selectAll("circle")
         .data(data)
         .enter()
         .append("circle")
-            .attr("cx", function (d) { return x(d.poverty); })
-            .attr("cy", function (d) { return y(d.healthcare); })
+            .attr("cx", function (d) { return x(d.rank); })
+            .attr("cy", function (d) { return y(d.global_sales); })
             .attr("r", 10)
             .attr("opacity", ".8")
             .style("fill", "#565051")
@@ -45,8 +48,8 @@ d3.json("/data").then(function(data){
         .data(data)
         .enter()
         .append("text")
-            .attr("x", function (d) { return x(d.poverty-.25); })
-            .attr("y", function (d) { return y(d.healthcare-.15); })
+            .attr("x", function (d) { return x(d.rank-.25); })
+            .attr("y", function (d) { return y(d.global_sales-.15); })
             .text(function(d){ return d.abbr})
             .attr("font-size", "9px")
             .attr("fill", "white");
@@ -61,7 +64,7 @@ d3.json("/data").then(function(data){
     .attr("transform",
         "translate(" + (width/2) + " ," + (height + margin.top + 18) + ")")
     .style("text-anchor", "middle")
-    .text("Games By " + pub);
+    .text("Games By " + "Nintendo");
 
     // Add the y Axis
     svg.append("g")
@@ -73,5 +76,6 @@ d3.json("/data").then(function(data){
         .attr("x",0 - (height / 2))
         .attr("dy", "1em")
         .style("text-anchor", "middle")
-        .text("Lacks Healthcare (%)");      
+        .text("Number of Sales (Globaly)");
+
 })

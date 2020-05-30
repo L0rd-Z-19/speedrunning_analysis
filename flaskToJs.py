@@ -29,17 +29,14 @@ def analysis():
 def data():
     return render_template("data.html")
 
-@app.route("/data")
+@app.route("/json")
 def games():
-
     # Extract data from DB
     conn = engine.connect()
     data = pd.read_sql('SELECT * FROM games', conn)
 
     #Convert to dictionary
     chart_data = data.to_dict(orient='records')
-    # chart_data = json.dumps(chart_data)
-    # chart_data = json.loads(chart_data)
 
     return jsonify(chart_data)
 
