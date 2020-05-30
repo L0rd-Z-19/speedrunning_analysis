@@ -1,8 +1,45 @@
 d3.json("/json").then(function(data){  
+    //get a full list of every developer for all games
+    publishers = ["",];
+    for(i=0; i < data.length; i++){
+        //If the publisher === selected publisher add it to the list
+        publishers.push(data[i]["publisher"])       
+    }
+    //narrow that list to only the unique publishers
+    var opt = [...new Set(publishers)];
+    //make a dropdown of all publishers
+    var dropDown = d3.select("#btn").append('select');
+    dropDown
+    .selectAll('myOptions')
+    .data(opt)
+    .enter()
+    .append('option')
+    .text(function (d) { return d;})
+    .attr("value", function (d) { return d;})
+    
+    //title of graph (h1 tag at the top of the page)
+    var title = d3.select("#title");
+    //define selectedOption
+    var selectedOption = "Nintendo";
+    //select the dropdown value
+    dropDown.on("change",function(d) {
+        //remove svg
+        d3.select("svg").remove();
+        //get the new selected value
+        selectedOption = d3.select(this).property("value")
+        //change the title
+        title.remove;
+        title.text(selectedOption);
+        //call the update function
+        createSVG(data,selectedOption);
+    })
+    createSVG(data,selectedOption);
+})
+function createSVG(data,selectedOption){
     pub = [];
     for(i=0; i < data.length; i++){
         //If the publisher === selected publisher add it to the list
-        if(data[i]["publisher"] === "Nintendo"){
+        if(data[i]["publisher"] === selectedOption){
             pub.push(data[i])
         }
     }
@@ -34,7 +71,7 @@ d3.json("/json").then(function(data){
     //add the data
     svg.append('g')
         .selectAll("circle")
-        .data(data)
+        .data(pub)
         .enter()
         .append("circle")
             .attr("cx", function (d) { return x(d.rank); })
@@ -42,17 +79,6 @@ d3.json("/json").then(function(data){
             .attr("r", 10)
             .attr("opacity", ".8")
             .style("fill", "#565051")
-
-    svg.append('g')
-        .selectAll("text")
-        .data(data)
-        .enter()
-        .append("text")
-            .attr("x", function (d) { return x(d.rank-.25); })
-            .attr("y", function (d) { return y(d.global_sales-.15); })
-            .text(function(d){ return d.abbr})
-            .attr("font-size", "9px")
-            .attr("fill", "white");
     
     // Add the x Axis
     svg.append("g")
@@ -64,7 +90,7 @@ d3.json("/json").then(function(data){
     .attr("transform",
         "translate(" + (width/2) + " ," + (height + margin.top + 18) + ")")
     .style("text-anchor", "middle")
-    .text("Games By " + "Nintendo");
+    .text("Games By " + selectedOption);
 
     // Add the y Axis
     svg.append("g")
@@ -77,5 +103,4 @@ d3.json("/json").then(function(data){
         .attr("dy", "1em")
         .style("text-anchor", "middle")
         .text("Number of Sales (Globaly)");
-
-})
+}
