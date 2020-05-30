@@ -1,5 +1,8 @@
 console.log('Hello World')
 
+importedData = d3.json('http://127.0.0.1:5000/data');
+console.log(importedData);
+
 // d3.csv("game_data.csv").then(function(importedData) {
 
 //     var data = importedData;
