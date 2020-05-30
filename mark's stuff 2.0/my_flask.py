@@ -21,10 +21,7 @@ app = Flask(__name__)
 
 def welcome():
 
-    # Extract data from DB
-    welcoming = "Welcome to our site! Use the route /data to access our game data."
-
-    return welcoming
+    return render_template("index.html")
 
 @app.route("/data")
 
