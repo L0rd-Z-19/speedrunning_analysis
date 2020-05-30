@@ -1,4 +1,4 @@
-var importedData = d3.json("https://l0rd-z-19.github.io/speedrunning_analysis/mark's%20stuff%202.0/app.js");
+var importedData = d3.json("/data");
 console.log(importedData);
 d3.csv("data/data.csv").then(function(data){
 
