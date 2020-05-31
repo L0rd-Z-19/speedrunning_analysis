@@ -76,9 +76,9 @@ function createSVG(data,selectedOption){
         .append("circle")
             .attr("cx", function (d) { return x(d.rank); })
             .attr("cy", function (d) { return y(d.global_sales); })
-            .attr("r", 10)
-            .attr("opacity", ".8")
-            .style("fill", "#565051")
+            .attr("r", 7)
+            .attr("opacity", ".6")
+            .style("fill", "#C98C3E")
     
     // Add the x Axis
     svg.append("g")
@@ -102,5 +102,5 @@ function createSVG(data,selectedOption){
         .attr("x",0 - (height / 2))
         .attr("dy", "1em")
         .style("text-anchor", "middle")
-        .text("Number of Sales (Globaly)");
+        .text("Number of Sales (In Millions)");
 }
