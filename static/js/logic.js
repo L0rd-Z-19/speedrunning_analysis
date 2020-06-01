@@ -1,6 +1,6 @@
 d3.json("/json").then(function(data){  
     //get a full list of every developer for all games
-    publishers = ["",];
+    publishers = [];
     for(i=0; i < data.length; i++){
         //If the publisher === selected publisher add it to the list
         publishers.push(data[i]["publisher"])       

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Gaming Analysis</title>
+        <title>Proposal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="static/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <style>
         div {
-            background-color: #B6D2C1;
+            background-color: #7D393F;
             height: 100vh;
             transition: background-color 1s;
         }
         </style>
     </head>
-    <body style="background-color: #B6D2C1;">
+    <body style="background-color: #7D393F;">
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -22,10 +22,10 @@
         
         <!-- Nav bar -->
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <a style="color:rgb(252, 249, 249)" href="/"><h1>Home</h1></a>
+            <a style="color:rgb(100, 99, 99)" href="/"><h1>Home</h1></a>
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" style="color:rgb(252, 249, 249)" href="analysis.html"><h5>Analysis</h5></a></li>
-                <li class="nav-item"><a class="nav-link" style="color:rgb(252, 249, 249)" href="data.html"><h5>Data</h5></a></li>
+                <li class="nav-item"><a class="nav-link" style="color:rgb(100, 99, 99)" href="analysis"><h5>Analysis</h5></a></li>
+                <li class="nav-item"><a class="nav-link" style="color:rgb(100, 99, 99)" href="data"><h5>Data</h5></a></li>
             </ul>
         </nav>
 
@@ -46,18 +46,22 @@
 
         <!-- main page -->
         <section class="container-fluid" style="text-align: center; padding-bottom: 10px ;">
-            <h1 class="main-title">Project Goal</h1>
+            <h1 class="main-title" style="color: #C98C3E;">Project Goal</h1>
             <hr>
-            <h5>Our Goal: <a href="https://www.kaggle.com/gregorut/videogamesales" style="color:rgb(252, 249, 249) ">To analyze at the bestselling games in history across multiple data factors to try to some factors that contributed to their success and popularity</a> </h5>
+            <h5>To analyze at the bestselling games in history across multiple data factors to try to some factors that contributed to their success and popularity </h5>
             <hr>
-            <img src="static/images/video_game_publishers.jpg">
+            <img src="../static/images/video_game_publishers.jpg">
             <hr style="opacity: 0">
-            <h5>Procedure</h5>
+            <h5 style="color: #C98C3E;">Procedure</h5>
+            <hr>
             <p>
                 In order to visualize this data in the most user friendly way, we utilized multiple tools to transition the data from a CSV to an interactive website.
             </p>
             <p>
-                To start we populated a SQL table with our CSV data to structure it into an easily understandable relational framework. We then used a  python flask application to pull the data from SQL and push it to an html api, that our website could then regularly call when a user interacts with our page.
+                To start we populated a SQL table with our CSV data to structure it into an easily understandable relational framework. 
+            </p>
+            <p>
+                We then used a python flask application to pull the data from SQL and push it to an html api, that our website could then regularly call when a user interacts with our page.
             </p>
             <p>
                 Finally we used HTML, CSS, and Javascript to make our website into a visually pleasing and interactive tool for users to analyze our data.
@@ -66,7 +70,7 @@
         <!-- footer -->
         <footer>
                 <hr>
-                <a href="https://github.com/L0rd-Z-19/speedrunning_analysis" style="color: rgb(252, 249, 249);">Our Github Repository</a>
+                <a href="https://github.com/L0rd-Z-19/speedrunning_analysis" style="color: #C98C3E;">Our Github Repository</a>
                 <hr>
         </footer>
     </body>
