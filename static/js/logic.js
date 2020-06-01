@@ -82,6 +82,25 @@ function createSVG(data,selectedOption,region){
             .attr("height", height + margin.top + margin.bottom)
         .append("g")
             .attr("transform","translate(" + margin.left + "," + margin.top + ")");
+    
+    var toolTip = d3
+    .tip()
+    .attr("class", "d3-tip")
+    .html(function(d) {
+        // Grab the Game title.
+        var theTitle = '<div> Game Title: ' + d.name + "</div>";
+        var thePlatform = '<div> Platform: ' + d.platform + "</div>";
+        var theRank = '<div> Overall Rank: ' + d.rank + "</div>";
+        var theSales;
+        if(region === "Global Sales"){theSales='<div> Global Sales: ' + d.global_sales + "</div>"}
+        else if(region === "North American Sales"){theSales='<div> North American Sales: ' + d.na_sales + "</div>"}
+        else if(region === "European Sales"){theSales='<div> European Sales: ' + d.eu_sales + "</div>"}
+        else if(region === "Japanese Sales"){theSales='<div> Japanese Sales: ' + d.jp_sales + "</div>"}
+        
+        return theTitle + thePlatform + theRank + theSales;
+    });
+    // Call the toolTip function.
+    svg.call(toolTip);
     //x-axis
     var x = d3.scaleLinear()
         .domain([0,data.length])
@@ -107,6 +126,20 @@ function createSVG(data,selectedOption,region){
             .attr("r", 7)
             .attr("opacity", ".6 ")
             .style("fill", "#C98C3E")
+            // Hover rules
+    .on("mouseover", function(d) {
+        // Show the tooltip
+        toolTip.show(d, this);
+        // Highlight the state circle's border
+        d3.select(this).style("stroke", "#323232");
+      })
+      .on("mouseout", function(d) {
+        // Remove the tooltip
+        toolTip.hide(d);
+        // Remove highlight
+        d3.select(this).style("stroke", "#e3e3e3");
+      });
+  
     }
     else if(region === "North American Sales"){
         svg.append('g')
@@ -119,6 +152,20 @@ function createSVG(data,selectedOption,region){
             .attr("r", 7)
             .attr("opacity", ".6 ")
             .style("fill", "#C98C3E")
+            // Hover rules
+    .on("mouseover", function(d) {
+        // Show the tooltip
+        toolTip.show(d, this);
+        // Highlight the state circle's border
+        d3.select(this).style("stroke", "#323232");
+      })
+      .on("mouseout", function(d) {
+        // Remove the tooltip
+        toolTip.hide(d);
+        // Remove highlight
+        d3.select(this).style("stroke", "#e3e3e3");
+      });
+  
     }
     else if(region === "European Sales"){
         svg.append('g')
@@ -131,6 +178,20 @@ function createSVG(data,selectedOption,region){
             .attr("r", 7)
             .attr("opacity", ".6 ")
             .style("fill", "#C98C3E")
+            // Hover rules
+    .on("mouseover", function(d) {
+        // Show the tooltip
+        toolTip.show(d, this);
+        // Highlight the state circle's border
+        d3.select(this).style("stroke", "#323232");
+      })
+      .on("mouseout", function(d) {
+        // Remove the tooltip
+        toolTip.hide(d);
+        // Remove highlight
+        d3.select(this).style("stroke", "#e3e3e3");
+      });
+  
     }
     else if(region === "Japanese Sales"){
         svg.append('g')
@@ -143,6 +204,20 @@ function createSVG(data,selectedOption,region){
             .attr("r", 7)
             .attr("opacity", ".6 ")
             .style("fill", "#C98C3E")
+            // Hover rules
+    .on("mouseover", function(d) {
+        // Show the tooltip
+        toolTip.show(d, this);
+        // Highlight the state circle's border
+        d3.select(this).style("stroke", "#323232");
+      })
+      .on("mouseout", function(d) {
+        // Remove the tooltip
+        toolTip.hide(d);
+        // Remove highlight
+        d3.select(this).style("stroke", "#e3e3e3");
+      });
+  
     }
     //Add the x Axis
     svg.append("g")
