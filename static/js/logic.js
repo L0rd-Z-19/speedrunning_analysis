@@ -91,13 +91,14 @@ function createSVG(data,selectedOption,region){
         var theTitle = '<div> Game Title: ' + d.name + "</div>";
         var thePlatform = '<div> Platform: ' + d.platform + "</div>";
         var theRank = '<div> Overall Rank: ' + d.rank + "</div>";
+        var thePubRank = '<div> ' + d.publisher + ' Rank: ' + d.pubRank + "</div>";
         var theSales;
         if(region === "Global Sales"){theSales='<div> Global Sales: ' + d.global_sales + "</div>"}
         else if(region === "North American Sales"){theSales='<div> North American Sales: ' + d.na_sales + "</div>"}
         else if(region === "European Sales"){theSales='<div> European Sales: ' + d.eu_sales + "</div>"}
         else if(region === "Japanese Sales"){theSales='<div> Japanese Sales: ' + d.jp_sales + "</div>"}
         
-        return theTitle + thePlatform + theRank + theSales;
+        return theTitle + thePlatform + theRank + thePubRank+ theSales;
     });
     // Call the toolTip function.
     svg.call(toolTip);

@@ -14,5 +14,4 @@ let tl = anime.timeline({
         backgroundColor: '#48C9B0'
     })
 
-
 setTimeout(() => { d3.select('#anime').remove(); }, 3000);
