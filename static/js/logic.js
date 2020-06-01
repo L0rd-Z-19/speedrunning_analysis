@@ -26,16 +26,38 @@ d3.json("/json").then(function(data){
         //remove svg
         d3.select("svg").remove();
         //get the new selected value
-        selectedOption = d3.select(this).property("value")
+        selectedOption = d3.select(this).property("value");
         //change the title
         title.remove;
         title.text(selectedOption);
         //call the update function
-        createSVG(data,selectedOption);
+        getData(data,selectedOption,region);
     })
-    createSVG(data,selectedOption);
+    
+    //create the region dropdown
+    var regions = ["Global Sales", "North American Sales", "European Sales", "Japanese Sales"];
+    var regionDrp = d3.select("#plot").append("span").append("select");
+    for(i=0;i<regions.length;i++){
+        regionDrp
+        .append("option")
+        .text(regions[i])
+        .attr("value", regions[i]);
+    }
+
+    var region = "Global Sales";
+
+    regionDrp.on("change",function(d){
+        //remove svg
+        d3.select("svg").remove();
+        //update with the new region
+        region = d3.select(this).property("value");
+        //redraw SVG
+        getData(data,selectedOption,region);
+    })
+    getData(data,selectedOption,region);
 })
-function createSVG(data,selectedOption){
+
+function getData(data,selectedOption,region){
     pub = [];
     for(i=0; i < data.length; i++){
         //If the publisher === selected publisher add it to the list
@@ -43,8 +65,13 @@ function createSVG(data,selectedOption){
             pub.push(data[i])
         }
     }
+    for(i=0;i < pub.length;i++){
+        pub[i].pubRank = i + 1;
+    }
+    createSVG(pub,selectedOption,region);
+}
 
-    //Plot the data!!!!
+function createSVG(data,selectedOption,region){
     var margin = {top: 10, right: 30, bottom: 30, left: 60},
         width = 690 - margin.left - margin.right,
         height = 600 - margin.top - margin.bottom;
@@ -57,7 +84,7 @@ function createSVG(data,selectedOption){
             .attr("transform","translate(" + margin.left + "," + margin.top + ")");
     //x-axis
     var x = d3.scaleLinear()
-        .domain([0,16598])
+        .domain([0,data.length])
         .range([0,width]);
     svg.append("g")
         .attr("transform", "translate(0," + height + ")")
@@ -74,33 +101,34 @@ function createSVG(data,selectedOption){
         .data(pub)
         .enter()
         .append("circle")
-            .attr("cx", function (d) { return x(d.rank); })
+            .attr("cx", function (d) { return x(d.pubRank); })
             .attr("cy", function (d) { return y(d.global_sales); })
             .attr("r", 7)
-            .attr("opacity", ".6")
+            .attr("opacity", ".6 ")
             .style("fill", "#C98C3E")
-    
-    // Add the x Axis
+    //Add the x Axis
     svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
-    // text label for the x axis
+    //label for the x axis
     svg.append("text")             
     .attr("transform",
         "translate(" + (width/2) + " ," + (height + margin.top + 18) + ")")
     .style("text-anchor", "middle")
     .text("Games By " + selectedOption);
 
-    // Add the y Axis
-    svg.append("g")
+    //label for the y Axis
+    svg.append("g").attr("class", "yOpt")
     .call(d3.axisLeft(y));
+    var yOpt = d3.select(".yOpt");
 
+    //Change name based on selected option (NA, EU, JP, Global)
     svg.append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
-        .attr("x",0 - (height / 2))
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("Number of Sales (In Millions)");
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x",0 - (height / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text(region + " (In Millions)");
 }
