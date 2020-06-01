@@ -91,11 +91,12 @@ function createSVG(data,selectedOption,region){
         .call(d3.axisBottom(x));
     //y-axis
     var y = d3.scaleLinear()
-        .domain([0,85])
+        .domain([0,data[0].global_sales])
         .range([height,0]);
     svg.append("g")
         .call(d3.axisLeft(y));
     //add the data
+    if(region === "Global Sales"){
     svg.append('g')
         .selectAll("circle")
         .data(pub)
@@ -106,6 +107,43 @@ function createSVG(data,selectedOption,region){
             .attr("r", 7)
             .attr("opacity", ".6 ")
             .style("fill", "#C98C3E")
+    }
+    else if(region === "North American Sales"){
+        svg.append('g')
+        .selectAll("circle")
+        .data(pub)
+        .enter()
+        .append("circle")
+            .attr("cx", function (d) { return x(d.pubRank); })
+            .attr("cy", function (d) { return y(d.na_sales); })
+            .attr("r", 7)
+            .attr("opacity", ".6 ")
+            .style("fill", "#C98C3E")
+    }
+    else if(region === "European Sales"){
+        svg.append('g')
+        .selectAll("circle")
+        .data(pub)
+        .enter()
+        .append("circle")
+            .attr("cx", function (d) { return x(d.pubRank); })
+            .attr("cy", function (d) { return y(d.eu_sales); })
+            .attr("r", 7)
+            .attr("opacity", ".6 ")
+            .style("fill", "#C98C3E")
+    }
+    else if(region === "Japanese Sales"){
+        svg.append('g')
+        .selectAll("circle")
+        .data(pub)
+        .enter()
+        .append("circle")
+            .attr("cx", function (d) { return x(d.pubRank); })
+            .attr("cy", function (d) { return y(d.jp_sales); })
+            .attr("r", 7)
+            .attr("opacity", ".6 ")
+            .style("fill", "#C98C3E")
+    }
     //Add the x Axis
     svg.append("g")
     .attr("transform", "translate(0," + height + ")")
