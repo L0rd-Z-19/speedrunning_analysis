@@ -17,11 +17,22 @@ span {
 
 }
 
+.main-title {
+	margin: 1em 0 0.5em 0;
+	color: #343434;
+	font-weight: normal;   
+	font-size: 36px;
+	line-height: 42px;
+	text-transform: uppercase;
+	text-shadow: 0 2px white, 0 3px #777;
+}
+
 /* div {
     background-color: #7D393F;
     height: 100vh;
     transition: background-color 1s;
 } */
+
 
 footer{
     text-align: center;
@@ -33,7 +44,7 @@ hr{
 }
 
 section{
-    background-color: #48C9B0;
+    background-color: rgb(192, 211, 188);
     width: 1550px;
     padding-left: 20px;
     padding-right: 20px;
@@ -88,7 +99,7 @@ iframe{
     }
 
     section{
-        background-color: #48C9B0;
+        background-color: rgb(192, 211, 188);
         width: 100%;
         height: auto;
         padding-left: 20px;
@@ -109,7 +120,7 @@ iframe{
         width: 100%;
         height: auto;
     }
-
+ 
     p{
         width: 100%;
         height: auto;
@@ -140,7 +151,7 @@ iframe{
     }
 
     section{
-        background-color: #48C9B0;
+        background-color: rgb(192, 211, 188);
         width: 100%;
         height: auto;
         padding-left: 20px;
