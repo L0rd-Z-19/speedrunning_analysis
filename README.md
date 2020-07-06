@@ -11,8 +11,8 @@ With these goals in mind our team set out to gather data, storing it in an SQL d
 <h3>JavaScript</h3>
  D3, Anime.js
  
-<h1>Getting Started<h1>
-  <p>If you would like to run this project on your local machine follow the next few steps.</p>
+ <h1>Getting Started</h1>
+If you would like to run this project on your local machine follow the next few steps.
 <ol>  
   <li>
       Clone the repository on to your own machine.
