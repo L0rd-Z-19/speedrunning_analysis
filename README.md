@@ -13,32 +13,32 @@ With these goals in mind our team set out to gather data, storing it in an SQL d
  
 <h1>Getting Started<h1>
   <p>If you would like to run this project on your local machine follow the next few steps.</p>
+<ol>  
   <li>
-     <ol>
       Clone the repository on to your own machine.
-    </ol>
-    <ol>
+    </li>
+    <li>
       Create a postgres database named game_db and copy the provided schema named games.sql into the query tool.
-    </ol>
-    <ol>
+    </li>
+    <li>
       Then populate that SQL Database with the provided CSV file named vgsales.csv using the import/export dropdown under the games table.
-    </ol>
-    <ol>
+    </li>
+    <li>
       Now open and run the Python file named flaskToJS, as long as you have all the libraries listed above (in the Built With section), installed it should host it on your local machine.
-    </ol>
   </li>
+</ol>
     <h1>Contributers</h1>
+ <ul>
+ <li>
+  <a href="https://github.com/adipersio">Adipersio</a>
+  </li>
   <li>
-  <ul>
-  <a href="https://github.com/adipersio">adipersio</a>
-  </ul>
-  <ul>
-  <a href="https://github.com/benanza">benanza</a>
-  </ul>
-  <ul>
-  <a href="https://github.com/markmessick">markmessick</a>
-  </ul>
-  <ul>
+  <a href="https://github.com/benanza">Benanza</a>
+  </li>
+  <li>
+  <a href="https://github.com/markmessick">MarkMessick</a>
+  </li>
+  <li>
   <a href="https://github.com/Zachary-R-Wilson">Zachary-R-Wilson</a>
-  </ul>
- </li>
+  </li>
+ </ul>  
